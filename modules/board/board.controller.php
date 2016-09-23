@@ -125,8 +125,15 @@ class boardController extends board
 				$obj->title_bold = $oDocument->get('title_bold');
 			}
 			
+			$docStatus = $oDocument->get('status');
+
+			// If the document had already public, then ignore to changed status value
+			if($docStatus == 'PUBLIC')
+			{
+				$obj->status = 'PUBLIC';
+			}
 			// modify list_order if document status is temp
-			if($oDocument->get('status') == 'TEMP')
+			else if($docStatus == 'TEMP')
 			{
 				$obj->last_update = $obj->regdate = date('YmdHis');
 				$obj->update_order = $obj->list_order = (getNextSequence() * -1);
