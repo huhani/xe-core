@@ -1470,7 +1470,7 @@ class memberController extends member
 		$signature = trim(removeHackTag($signature));
 		$signature = preg_replace('/<(\/?)(embed|object|param)/is', '&lt;$1$2', $signature);
 
-		$check_signature = trim(str_replace(array('&nbsp;',"\n","\r"),'',strip_tags($signature,'<img><object>')));
+		$check_signature = trim(str_replace(array('&nbsp;',"\n","\r"), '', strip_tags($signature, '<img><object>')));
 		$path = sprintf('files/member_extra_info/signature/%s/', getNumberingPath($member_srl));
 		$filename = sprintf('%s%d.signature.php', $path, $member_srl);
 
